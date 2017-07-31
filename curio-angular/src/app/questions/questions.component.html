@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Available questions</div>
+  <div class="panel-body">
+    <ul>
+      <li *ngFor="let question of questions" (click)="gotoDetail(question)"
+          [class.selected]="question === selectedQuestion">
+        <span class="badge">{{ question.pk }}</span>
+        <span>{{ question.text }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <question-search></question-search>
+</div>

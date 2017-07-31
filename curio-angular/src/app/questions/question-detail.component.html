@@ -1,0 +1,20 @@
+<div *ngIf="question">
+  <div *ngIf="selectedAnswer">
+      Your answer is {{ selectedAnswer.text }} and it is
+      <span [ngSwitch]="selectedAnswer.is_correct">
+        <b class="correct" *ngSwitchCase="true">correct</b>
+        <b class="wrong" *ngSwitchDefault>wrong</b>
+      </span>
+
+  </div>
+  <h2>{{question.text}}</h2>
+  <form #f="ngForm" (ngSubmit)="submitAnswer(f)">
+    <div *ngFor="let answer of _answers">
+        <div class="radio">
+            <label><input ngModel #formAnswer="ngModel" type="radio" name="answer" value="{{ answer.id }}">{{ answer.text }}</label>
+        </div>
+    </div>
+    <input type="submit" value="Check">
+  </form>
+  <button (click)="goBack()">Back</button>
+</div>

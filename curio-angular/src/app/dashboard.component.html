@@ -1,0 +1,19 @@
+<h3>Questions</h3>
+<div class="grid grid-pad">
+    <a *ngFor="let question of questions" (click)="gotoDetail(question)" class="col-1-4">
+        <div class="module hero">
+            <h4>{{ question.text }}</h4>
+            <button class="delete"
+                (click)="delete(question); $event.stopPropagation()">x</button>
+        </div>
+    </a>
+
+</div>
+    <label>Question text:</label> <input #questionName />
+    <div *ngFor="let number of answerInlines">
+        <input #number >
+    </div>
+    <button (click)="add(questionName.value); questionName.value=''">
+        Add
+    </button>
+<question-search></question-search>

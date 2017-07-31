@@ -1,0 +1,55 @@
+<form [formGroup]="form" (ngSubmit)="signUp()">
+    <div *ngIf="form.errors"
+        class="alert alert-danger">
+        Username or password invalid.
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+            <div *ngIf="username.errors.required">Username is required.</div>
+            <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters.</div>
+            <div *ngIf="username.errors.cannotContainSpace">Username should not contain spaces.</div>
+
+            <div *ngIf="username.errors.invalidUsername"> fffff{{ username.errors.invalidUsername }}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input
+            formControlName="email"
+            id="email"
+            type="text"
+            class="form-control">
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+            <div *ngIf="email.errors.required">Email is required.</div>
+            <div *ngIf="email.errors.minlength">Email should be minimum {{ email.errors.minlength.requiredLength }} characters.</div>
+            <div *ngIf="email.errors.cannotContainSpace">Email should not contain spaces.</div>
+
+            <div *ngIf="email.errors.invalidEmail"> {{ email.errors.invalidEmail }}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="password"
+            class="form-control">
+        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">Password is required.</div>
+    </div>
+    <div class="form-group">
+        <label for="repeatedPassword">Password</label>
+        <input
+            formControlName="repeatedPassword"
+            id="repeatedPassword"
+            type="password"
+            class="form-control">
+        <div *ngIf="repeatedPassword.touched && repeatedPassword.invalid" class="alert alert-danger">Password is required.</div>
+    </div>
+    <button class="btn btn-primary" type="submit">Sign up</button>
+</form>
